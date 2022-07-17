@@ -1,0 +1,49 @@
+﻿@model Курсовая.Организаторы
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление</h2>
+
+<h3>Вы точно хотите удалить?</h3>
+<div>
+    <h4>Организатор @Model.ID_организатора</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Должность)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Должность)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Обязанность)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Обязанность)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Комиссия)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Комиссия)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад", "Index")
+        </div>
+    }
+</div>

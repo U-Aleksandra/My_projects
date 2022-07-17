@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b5d6c1cda92748f78001f1b385fbcb4a" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="Оргкомитет_конференцииModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Оргкомитет_конференцииModel.Докладчики" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="Оргкомитет_конференцииModel.Доклады" Width="1.5" PointX="7.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Оргкомитет_конференцииModel.Зона" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Оргкомитет_конференцииModel.Конференция" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Оргкомитет_конференцииModel.Место_проведения" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Оргкомитет_конференцииModel.Обслуживающий_персонал" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Оргкомитет_конференцииModel.Организаторы" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Оргкомитет_конференцииModel.Сборник" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Оргкомитет_конференцииModel.Спонсоры" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Оргкомитет_конференцииModel.Участники" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <AssociationConnector Association="Оргкомитет_конференцииModel.FK_Dokladchiks_Ychastnikis" ManuallyRouted="false" />
+        <AssociationConnector Association="Оргкомитет_конференцииModel.FK_Доклады_Докладчики" ManuallyRouted="false" />
+        <AssociationConnector Association="Оргкомитет_конференцииModel.FK_Зона_Место_проведения" ManuallyRouted="false" />
+        <AssociationConnector Association="Оргкомитет_конференцииModel.FK_Обслуживающий_персонал_Зона" ManuallyRouted="false" />
+        <AssociationConnector Association="Оргкомитет_конференцииModel.FK_Mesto_provedeniyas_Konferencias" ManuallyRouted="false" />
+        <AssociationConnector Association="Оргкомитет_конференцииModel.FK_Сборник_Конференция" ManuallyRouted="false" />
+        <AssociationConnector Association="Оргкомитет_конференцииModel.FK_Спонсоры_Конференция" ManuallyRouted="false" />
+        <AssociationConnector Association="Оргкомитет_конференцииModel.FK_Участники_Конференция" ManuallyRouted="false" />
+        <AssociationConnector Association="Оргкомитет_конференцииModel.FK_Obslygivaushi_personal_Ychastnikis" ManuallyRouted="false" />
+        <AssociationConnector Association="Оргкомитет_конференцииModel.FK_Организаторы_Участники" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Оргкомитет_конференцииModel.C__MigrationHistory" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Оргкомитет_конференцииModel.Users" Width="1.5" PointX="10" PointY="3.75" />
+        <EntityTypeShape EntityType="Оргкомитет_конференцииModel.Role" Width="1.5" PointX="10" PointY="6.625" />
+        <AssociationConnector Association="Оргкомитет_конференцииModel.FK_Users_Role" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

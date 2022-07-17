@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Курсовая.Доклады>
+
+@{
+    ViewBag.Title = "Таблица 'Доклады'";
+}
+
+<h2>Таблица "Доклады"</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Id участника: @Html.TextBox("IdYch")
+        Максимальная сумма: @Html.TextBox("MaxSum")
+        Скидка (например: 0,1): @Html.TextBox("Sell")
+        <input type="submit" value="Сделать скидку" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Докладчики.Участники.Конференция.ID_конференции)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Докладчики.Участники.ID_участника)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Название)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Направление)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Публикация)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Денежный_взнос)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Количество_минут)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Баллы)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Докладчики.Паспорт)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Докладчики.Участники.Конференция.ID_конференции)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Докладчики.Участники.ID_участника)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Название)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Направление)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Публикация)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Денежный_взнос)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Количество_минут)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Баллы)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Докладчики.Паспорт)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID_доклада }) /
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID_доклада })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,96 @@
+﻿@model Курсовая.Конференция
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление конференции</h2>
+
+<h3>Вы точно хотите удалить?</h3>
+<div>
+    <h4>Конференция @Model.ID_конференции</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Название_конференции)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Название_конференции)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Основная_тема)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Основная_тема)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_проведения_Начало)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_проведения_Начало)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_проведения_Конец)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_проведения_Конец)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Организация)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Организация)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Город)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Город)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Аудитория)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Аудитория)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Рабочий_язык_конференции)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Рабочий_язык_конференции)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ссылка_на_сайт)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ссылка_на_сайт)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад", "Index")
+        </div>
+    }
+</div>

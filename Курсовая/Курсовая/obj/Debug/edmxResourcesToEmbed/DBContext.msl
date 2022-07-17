@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Оргкомитет_конференцииModelContainer" CdmEntityContainer="Оргкомитет_конференцииEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Оргкомитет_конференцииModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Докладчики">
+      <EntityTypeMapping TypeName="Оргкомитет_конференцииModel.Докладчики">
+        <MappingFragment StoreEntitySet="Докладчики">
+          <ScalarProperty Name="ID_докладчика" ColumnName="ID_докладчика" />
+          <ScalarProperty Name="Паспорт" ColumnName="Паспорт" />
+          <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+          <ScalarProperty Name="Учебное_заведение" ColumnName="Учебное_заведение" />
+          <ScalarProperty Name="Курс" ColumnName="Курс" />
+          <ScalarProperty Name="Научный_руководитель" ColumnName="Научный_руководитель" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Доклады">
+      <EntityTypeMapping TypeName="Оргкомитет_конференцииModel.Доклады">
+        <MappingFragment StoreEntitySet="Доклады">
+          <ScalarProperty Name="ID_доклада" ColumnName="ID_доклада" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Направление" ColumnName="Направление" />
+          <ScalarProperty Name="Публикация" ColumnName="Публикация" />
+          <ScalarProperty Name="Денежный_взнос" ColumnName="Денежный_взнос" />
+          <ScalarProperty Name="Количество_минут" ColumnName="Количество_минут" />
+          <ScalarProperty Name="Баллы" ColumnName="Баллы" />
+          <ScalarProperty Name="ID_докладчика" ColumnName="ID_докладчика" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Зона">
+      <EntityTypeMapping TypeName="Оргкомитет_конференцииModel.Зона">
+        <MappingFragment StoreEntitySet="Зона">
+          <ScalarProperty Name="ID_зоны" ColumnName="ID_зоны" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Предназначение" ColumnName="Предназначение" />
+          <ScalarProperty Name="Технический_специалист" ColumnName="Технический_специалист" />
+          <ScalarProperty Name="Техника" ColumnName="Техника" />
+          <ScalarProperty Name="ID_места_нахождения" ColumnName="ID_места_нахождения" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Конференция">
+      <EntityTypeMapping TypeName="Оргкомитет_конференцииModel.Конференция">
+        <MappingFragment StoreEntitySet="Конференция">
+          <ScalarProperty Name="ID_конференции" ColumnName="ID_конференции" />
+          <ScalarProperty Name="Название_конференции" ColumnName="Название_конференции" />
+          <ScalarProperty Name="Основная_тема" ColumnName="Основная_тема" />
+          <ScalarProperty Name="Дата_проведения_Начало" ColumnName="Дата_проведения_Начало" />
+          <ScalarProperty Name="Дата_проведения_Конец" ColumnName="Дата_проведения_Конец" />
+          <ScalarProperty Name="Организация" ColumnName="Организация" />
+          <ScalarProperty Name="Город" ColumnName="Город" />
+          <ScalarProperty Name="Аудитория" ColumnName="Аудитория" />
+          <ScalarProperty Name="Рабочий_язык_конференции" ColumnName="Рабочий_язык_конференции" />
+          <ScalarProperty Name="Ссылка_на_сайт" ColumnName="Ссылка_на_сайт" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Место_проведения">
+      <EntityTypeMapping TypeName="Оргкомитет_конференцииModel.Место_проведения">
+        <MappingFragment StoreEntitySet="Место_проведения">
+          <ScalarProperty Name="ID_места_проведения" ColumnName="ID_места_проведения" />
+          <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Стоимость_аренды" ColumnName="Стоимость_аренды" />
+          <ScalarProperty Name="Дата_аренды" ColumnName="Дата_аренды" />
+          <ScalarProperty Name="ID_конференции" ColumnName="ID_конференции" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Обслуживающий_персонал">
+      <EntityTypeMapping TypeName="Оргкомитет_конференцииModel.Обслуживающий_персонал">
+        <MappingFragment StoreEntitySet="Обслуживающий_персонал">
+          <ScalarProperty Name="ID_сотрудника" ColumnName="ID_сотрудника" />
+          <ScalarProperty Name="Ответственная_зона" ColumnName="Ответственная_зона" />
+          <ScalarProperty Name="Обязанности" ColumnName="Обязанности" />
+          <ScalarProperty Name="Стоимость_услуг" ColumnName="Стоимость_услуг" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Организаторы">
+      <EntityTypeMapping TypeName="Оргкомитет_конференцииModel.Организаторы">
+        <MappingFragment StoreEntitySet="Организаторы">
+          <ScalarProperty Name="ID_организатора" ColumnName="ID_организатора" />
+          <ScalarProperty Name="Должность" ColumnName="Должность" />
+          <ScalarProperty Name="Обязанность" ColumnName="Обязанность" />
+          <ScalarProperty Name="Комиссия" ColumnName="Комиссия" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Сборник">
+      <EntityTypeMapping TypeName="Оргкомитет_конференцииModel.Сборник">
+        <MappingFragment StoreEntitySet="Сборник">
+          <ScalarProperty Name="ID_сборник" ColumnName="ID_сборник" />
+          <ScalarProperty Name="ID_конференции" ColumnName="ID_конференции" />
+          <ScalarProperty Name="Название_сборника" ColumnName="Название_сборника" />
+          <ScalarProperty Name="Издательский_центр" ColumnName="Издательский_центр" />
+          <ScalarProperty Name="РИНЦ" ColumnName="РИНЦ" />
+          <ScalarProperty Name="Стоимость" ColumnName="Стоимость" />
+          <ScalarProperty Name="Количество_страниц" ColumnName="Количество_страниц" />
+          <ScalarProperty Name="Электронный_или_печатный_вариант" ColumnName="Электронный_или_печатный_вариант" />
+          <ScalarProperty Name="Дата_выпуска" ColumnName="Дата_выпуска" />
+          <ScalarProperty Name="Рассылка_докладчикам" ColumnName="Рассылка_докладчикам" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Спонсоры">
+      <EntityTypeMapping TypeName="Оргкомитет_конференцииModel.Спонсоры">
+        <MappingFragment StoreEntitySet="Спонсоры">
+          <ScalarProperty Name="ID_спонсора" ColumnName="ID_спонсора" />
+          <ScalarProperty Name="Название_компании" ColumnName="Название_компании" />
+          <ScalarProperty Name="Представитель" ColumnName="Представитель" />
+          <ScalarProperty Name="Спонсорский_пакет" ColumnName="Спонсорский_пакет" />
+          <ScalarProperty Name="Сумма" ColumnName="Сумма" />
+          <ScalarProperty Name="ID_конференции" ColumnName="ID_конференции" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Участники">
+      <EntityTypeMapping TypeName="Оргкомитет_конференцииModel.Участники">
+        <MappingFragment StoreEntitySet="Участники">
+          <ScalarProperty Name="ID_участника" ColumnName="ID_участника" />
+          <ScalarProperty Name="ID_конференции" ColumnName="ID_конференции" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+          <ScalarProperty Name="Почта" ColumnName="Почта" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SELL" FunctionName="Хранилище Оргкомитет_конференцииModel.SELL" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище Оргкомитет_конференцииModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище Оргкомитет_конференцииModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище Оргкомитет_конференцииModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище Оргкомитет_конференцииModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Оргкомитет_конференцииModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище Оргкомитет_конференцииModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Оргкомитет_конференцииModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище Оргкомитет_конференцииModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище Оргкомитет_конференцииModel.sp_upgraddiagrams" />
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="Оргкомитет_конференцииModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Оргкомитет_конференцииModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="IdRoles" ColumnName="IdRoles" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="Оргкомитет_конференцииModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Winner1" FunctionName="Хранилище Оргкомитет_конференцииModel.Winner">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Оргкомитет_конференцииModel.Winner1_Result">
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Учебное_заведение" ColumnName="Учебное_заведение" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Направление" ColumnName="Направление" />
+          <ScalarProperty Name="Баллы" ColumnName="Баллы" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="budget" FunctionName="Хранилище Оргкомитет_конференцииModel.budget">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Оргкомитет_конференцииModel.budget_Result">
+          <ScalarProperty Name="Название_конференции" ColumnName="Название_конференции" />
+          <ScalarProperty Name="Затраты" ColumnName="Затраты" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,64 @@
+﻿@model Курсовая.Зона
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление данных</h2>
+
+<h3>Вы точно хотите удалить?</h3>
+<div>
+    <h4>Зона @Model.ID_места_нахождения</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Название)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Название)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Предназначение)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Предназначение)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Технический_специалист)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Технический_специалист)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Техника)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Техника)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Место_проведения.Адрес)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Место_проведения.Адрес)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад", "Index")
+        </div>
+    }
+</div>

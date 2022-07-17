@@ -1,0 +1,90 @@
+﻿@model Курсовая.Сборник
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Сборник</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Название_сборника)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Название_сборника)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Издательский_центр)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Издательский_центр)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.РИНЦ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.РИНЦ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Стоимость)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Стоимость)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Количество_страниц)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Количество_страниц)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Электронный_или_печатный_вариант)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Электронный_или_печатный_вариант)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_выпуска)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_выпуска)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Рассылка_докладчикам)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Рассылка_докладчикам)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Конференция.Название_конференции)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Конференция.Название_конференции)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_сборник }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

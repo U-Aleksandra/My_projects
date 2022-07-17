@@ -1,0 +1,12 @@
+﻿@model Практика_задание2.Controllers.BaseController
+@{
+    ViewBag.Title = "Ошибка";
+}
+
+<h2>Упс, кажется произошла ошибка:</h2>
+<br />
+<h4>@ViewBag.Message</h4>
+<br />
+<div>
+    @Html.ActionLink("На главную страницу", "Index", "Home")
+</div>

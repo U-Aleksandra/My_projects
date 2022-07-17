@@ -1,0 +1,56 @@
+﻿@model Курсовая.Обслуживающий_персонал
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление</h2>
+
+<h3>Вы точно хотите удалить?</h3>
+<div>
+    <h4>Сотрудник @Model.ID_сотрудника</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Обязанности)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Обязанности)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Стоимость_услуг)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Стоимость_услуг) руб/час
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Зона.Название)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Зона.Название)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Участники.Фамилия)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Участники.Фамилия)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад", "Index")
+        </div>
+    }
+</div>

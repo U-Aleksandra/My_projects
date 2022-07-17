@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Курсовая.Конференция>
+
+@{
+    ViewBag.Title = "Таблица 'Конеференция'";
+}
+
+<h2>Таблица "Конференция"</h2>
+@if (Roles.IsUserInRole("admin"))
+{
+    <p>
+        @Html.ActionLink("Добавить", "Create")
+    </p>
+}
+@using (Html.BeginForm())
+{
+    <p>
+        Поиск по городам: @Html.TextBox("SearchString")
+        Поиск по началу даты проведения: @Html.TextBox("Date")
+        <input type="submit" value="Поиск" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_конференции)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Название_конференции)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Основная_тема)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Дата_проведения_Начало)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Дата_проведения_Конец)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Организация)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Город)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Аудитория)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Рабочий_язык_конференции)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ссылка_на_сайт)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_конференции)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Название_конференции)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Основная_тема)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата_проведения_Начало)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата_проведения_Конец)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Организация)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Город)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Аудитория)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Рабочий_язык_конференции)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ссылка_на_сайт)
+            </td>
+            @if (Roles.IsUserInRole("admin"))
+            {
+                <td>
+                    @Html.ActionLink("Редактировать", "Edit", new { id = item.ID_конференции }) /
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.ID_конференции })
+                </td>
+            }
+        </tr>
+    }
+
+</table>

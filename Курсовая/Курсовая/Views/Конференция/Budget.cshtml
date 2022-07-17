@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Курсовая.budget_Result>
+@{
+    ViewBag.Title = "Расчет бюджета";
+}
+
+<h2>Расчет бюджета конференции</h2>
+
+@using (Html.BeginForm())
+{
+<p>
+        <div style="margin-top: 10px">
+            ID конференции: @Html.TextBox("IdKonf")
+        </div>
+
+        <div style="margin-top: 10px">
+            Количество экземпляров сборника: @Html.TextBox("Sbornik")
+        </div>
+        <div style="margin-top: 10px">
+            Длительность мероприятия (в часах): @Html.TextBox("Hour")
+        </div>
+        <div style="margin-top: 10px">
+            Время работы персонала (в часах): @Html.TextBox("Pers")
+        </div>
+        <input type="submit" value="Рассчитать" />
+</p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Название конференции")
+        </th>
+        <th>
+            @Html.DisplayName("Сумма затратов") рублей
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Название_конференции)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Затраты)
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище Оргкомитет_конференцииModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdRoles" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Докладчики">
+    <Key>
+      <PropertyRef Name="ID_докладчика" />
+    </Key>
+    <Property Name="ID_докладчика" Type="int" Nullable="false" />
+    <Property Name="Паспорт" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Дата_рождения" Type="date" Nullable="false" />
+    <Property Name="Учебное_заведение" Type="nvarchar" MaxLength="100" />
+    <Property Name="Курс" Type="int" />
+    <Property Name="Научный_руководитель" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Доклады">
+    <Key>
+      <PropertyRef Name="ID_доклада" />
+    </Key>
+    <Property Name="ID_доклада" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Название" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Направление" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Публикация" Type="bit" Nullable="false" />
+    <Property Name="Денежный_взнос" Type="money" Nullable="false" />
+    <Property Name="Количество_минут" Type="float" />
+    <Property Name="Баллы" Type="int" />
+    <Property Name="ID_докладчика" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Зона">
+    <Key>
+      <PropertyRef Name="ID_зоны" />
+    </Key>
+    <Property Name="ID_зоны" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Название" Type="nvarchar" MaxLength="50" />
+    <Property Name="Предназначение" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Технический_специалист" Type="nvarchar" MaxLength="50" />
+    <Property Name="Техника" Type="nvarchar" MaxLength="100" />
+    <Property Name="ID_места_нахождения" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Конференция">
+    <Key>
+      <PropertyRef Name="ID_конференции" />
+    </Key>
+    <Property Name="ID_конференции" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Название_конференции" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Основная_тема" Type="nvarchar" MaxLength="100" />
+    <Property Name="Дата_проведения_Начало" Type="date" Nullable="false" />
+    <Property Name="Дата_проведения_Конец" Type="date" />
+    <Property Name="Организация" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Город" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Аудитория" Type="nvarchar" MaxLength="50" />
+    <Property Name="Рабочий_язык_конференции" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ссылка_на_сайт" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Место_проведения">
+    <Key>
+      <PropertyRef Name="ID_места_проведения" />
+    </Key>
+    <Property Name="ID_места_проведения" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Адрес" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Название" Type="nchar" MaxLength="100" />
+    <Property Name="Стоимость_аренды" Type="money" />
+    <Property Name="Дата_аренды" Type="date" Nullable="false" />
+    <Property Name="ID_конференции" Type="int" />
+  </EntityType>
+  <EntityType Name="Обслуживающий_персонал">
+    <Key>
+      <PropertyRef Name="ID_сотрудника" />
+    </Key>
+    <Property Name="ID_сотрудника" Type="int" Nullable="false" />
+    <Property Name="Ответственная_зона" Type="int" Nullable="false" />
+    <Property Name="Обязанности" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Стоимость_услуг" Type="money" />
+  </EntityType>
+  <EntityType Name="Организаторы">
+    <Key>
+      <PropertyRef Name="ID_организатора" />
+    </Key>
+    <Property Name="ID_организатора" Type="int" Nullable="false" />
+    <Property Name="Должность" Type="nvarchar" MaxLength="50" />
+    <Property Name="Обязанность" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Комиссия" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Сборник">
+    <Key>
+      <PropertyRef Name="ID_сборник" />
+    </Key>
+    <Property Name="ID_сборник" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_конференции" Type="int" Nullable="false" />
+    <Property Name="Название_сборника" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Издательский_центр" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="РИНЦ" Type="bit" Nullable="false" />
+    <Property Name="Стоимость" Type="money" />
+    <Property Name="Количество_страниц" Type="int" />
+    <Property Name="Электронный_или_печатный_вариант" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Дата_выпуска" Type="date" Nullable="false" />
+    <Property Name="Рассылка_докладчикам" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Спонсоры">
+    <Key>
+      <PropertyRef Name="ID_спонсора" />
+    </Key>
+    <Property Name="ID_спонсора" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Название_компании" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Представитель" Type="nvarchar" MaxLength="50" />
+    <Property Name="Спонсорский_пакет" Type="nvarchar" MaxLength="50" />
+    <Property Name="Сумма" Type="money" Nullable="false" />
+    <Property Name="ID_конференции" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Участники">
+    <Key>
+      <PropertyRef Name="ID_участника" />
+    </Key>
+    <Property Name="ID_участника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_конференции" Type="int" Nullable="false" />
+    <Property Name="Фамилия" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Имя" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
+    <Property Name="Телефон" Type="nchar" MaxLength="11" Nullable="false" />
+    <Property Name="Почта" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Dokladchiks_Ychastnikis">
+    <End Role="Участники" Type="Self.Участники" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Докладчики" Type="Self.Докладчики" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Участники">
+        <PropertyRef Name="ID_участника" />
+      </Principal>
+      <Dependent Role="Докладчики">
+        <PropertyRef Name="ID_докладчика" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mesto_provedeniyas_Konferencias">
+    <End Role="Конференция" Type="Self.Конференция" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Место_проведения" Type="Self.Место_проведения" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Конференция">
+        <PropertyRef Name="ID_конференции" />
+      </Principal>
+      <Dependent Role="Место_проведения">
+        <PropertyRef Name="ID_конференции" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Obslygivaushi_personal_Ychastnikis">
+    <End Role="Участники" Type="Self.Участники" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Обслуживающий_персонал" Type="Self.Обслуживающий_персонал" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Участники">
+        <PropertyRef Name="ID_участника" />
+      </Principal>
+      <Dependent Role="Обслуживающий_персонал">
+        <PropertyRef Name="ID_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="IdRoles" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Доклады_Докладчики">
+    <End Role="Докладчики" Type="Self.Докладчики" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Доклады" Type="Self.Доклады" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Докладчики">
+        <PropertyRef Name="ID_докладчика" />
+      </Principal>
+      <Dependent Role="Доклады">
+        <PropertyRef Name="ID_докладчика" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Зона_Место проведения">
+    <End Role="Место_проведения" Type="Self.Место_проведения" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Зона" Type="Self.Зона" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Место_проведения">
+        <PropertyRef Name="ID_места_проведения" />
+      </Principal>
+      <Dependent Role="Зона">
+        <PropertyRef Name="ID_места_нахождения" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Обслуживающий персонал_Зона">
+    <End Role="Зона" Type="Self.Зона" Multiplicity="1" />
+    <End Role="Обслуживающий_персонал" Type="Self.Обслуживающий_персонал" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Зона">
+        <PropertyRef Name="ID_зоны" />
+      </Principal>
+      <Dependent Role="Обслуживающий_персонал">
+        <PropertyRef Name="Ответственная_зона" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Организаторы_Участники">
+    <End Role="Участники" Type="Self.Участники" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Организаторы" Type="Self.Организаторы" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Участники">
+        <PropertyRef Name="ID_участника" />
+      </Principal>
+      <Dependent Role="Организаторы">
+        <PropertyRef Name="ID_организатора" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Сборник_Конференция">
+    <End Role="Конференция" Type="Self.Конференция" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Сборник" Type="Self.Сборник" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Конференция">
+        <PropertyRef Name="ID_конференции" />
+      </Principal>
+      <Dependent Role="Сборник">
+        <PropertyRef Name="ID_конференции" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Спонсоры_Конференция">
+    <End Role="Конференция" Type="Self.Конференция" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Спонсоры" Type="Self.Спонсоры" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Конференция">
+        <PropertyRef Name="ID_конференции" />
+      </Principal>
+      <Dependent Role="Спонсоры">
+        <PropertyRef Name="ID_конференции" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Участники_Конференция">
+    <End Role="Конференция" Type="Self.Конференция" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Участники" Type="Self.Участники" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Конференция">
+        <PropertyRef Name="ID_конференции" />
+      </Principal>
+      <Dependent Role="Участники">
+        <PropertyRef Name="ID_конференции" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="budget" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idKonf" Type="int" Mode="In" />
+    <Parameter Name="countSbornik" Type="int" Mode="In" />
+    <Parameter Name="hour" Type="float" Mode="In" />
+    <Parameter Name="countStaff" Type="float" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Название_конференции" Type="nvarchar" MaxLength="200" />
+          <Property Name="Затраты" Type="decimal" Precision="18" Scale="0" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="SELL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="maxsum" Type="money" Mode="In" />
+    <Parameter Name="sell" Type="float" Mode="In" />
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Winner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idKonf" Type="int" Mode="In" />
+    <Parameter Name="napravl" Type="nvarchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="50" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="50" />
+          <Property Name="Учебное_заведение" Type="nvarchar" MaxLength="100" />
+          <Property Name="Название" Type="nvarchar" MaxLength="50" />
+          <Property Name="Направление" Type="nvarchar" MaxLength="100" />
+          <Property Name="Баллы" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <EntityContainer Name="Хранилище Оргкомитет_конференцииModelContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Докладчики" EntityType="Self.Докладчики" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Доклады" EntityType="Self.Доклады" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Зона" EntityType="Self.Зона" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Конференция" EntityType="Self.Конференция" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Место_проведения" EntityType="Self.Место_проведения" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Обслуживающий_персонал" EntityType="Self.Обслуживающий_персонал" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Организаторы" EntityType="Self.Организаторы" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Сборник" EntityType="Self.Сборник" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Спонсоры" EntityType="Self.Спонсоры" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Участники" EntityType="Self.Участники" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Dokladchiks_Ychastnikis" Association="Self.FK_Dokladchiks_Ychastnikis">
+      <End Role="Участники" EntitySet="Участники" />
+      <End Role="Докладчики" EntitySet="Докладчики" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mesto_provedeniyas_Konferencias" Association="Self.FK_Mesto_provedeniyas_Konferencias">
+      <End Role="Конференция" EntitySet="Конференция" />
+      <End Role="Место_проведения" EntitySet="Место_проведения" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Obslygivaushi_personal_Ychastnikis" Association="Self.FK_Obslygivaushi_personal_Ychastnikis">
+      <End Role="Участники" EntitySet="Участники" />
+      <End Role="Обслуживающий_персонал" EntitySet="Обслуживающий_персонал" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Role" Association="Self.FK_Users_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Доклады_Докладчики" Association="Self.FK_Доклады_Докладчики">
+      <End Role="Докладчики" EntitySet="Докладчики" />
+      <End Role="Доклады" EntitySet="Доклады" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Зона_Место проведения" Association="Self.FK_Зона_Место проведения">
+      <End Role="Место_проведения" EntitySet="Место_проведения" />
+      <End Role="Зона" EntitySet="Зона" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Обслуживающий персонал_Зона" Association="Self.FK_Обслуживающий персонал_Зона">
+      <End Role="Зона" EntitySet="Зона" />
+      <End Role="Обслуживающий_персонал" EntitySet="Обслуживающий_персонал" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Организаторы_Участники" Association="Self.FK_Организаторы_Участники">
+      <End Role="Участники" EntitySet="Участники" />
+      <End Role="Организаторы" EntitySet="Организаторы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Сборник_Конференция" Association="Self.FK_Сборник_Конференция">
+      <End Role="Конференция" EntitySet="Конференция" />
+      <End Role="Сборник" EntitySet="Сборник" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Спонсоры_Конференция" Association="Self.FK_Спонсоры_Конференция">
+      <End Role="Конференция" EntitySet="Конференция" />
+      <End Role="Спонсоры" EntitySet="Спонсоры" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Участники_Конференция" Association="Self.FK_Участники_Конференция">
+      <End Role="Конференция" EntitySet="Конференция" />
+      <End Role="Участники" EntitySet="Участники" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

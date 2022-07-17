@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Курсовая.Спонсоры>
+
+@{
+    ViewBag.Title = "Таблица 'Спонсоры'";
+}
+
+<h2>Таблица "Спонсоры"</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+@using (Html.BeginForm())
+{
+<p>
+    @Html.DropDownList("SponPaket", new[]
+    { new SelectListItem(){ Text = "Бронзовый спонсор", Value="Бронзовый спонсор"},
+    new SelectListItem(){ Text = "Серебряный спонсор", Value = "Серебряный спонсор"},
+    new SelectListItem(){Text = "Золотой спонсор", Value= "Золотой спонсор"} }, "Спонсорский пакет")
+    Денежная сумма от: @Html.TextBox("MoneySum")
+    <input type="submit" value="Поиск" />
+</p>
+
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Название_компании)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Представитель)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Спонсорский_пакет)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Сумма)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Конференция.Название_конференции)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Название_компании)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Представитель)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Спонсорский_пакет)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Сумма) рублей
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Конференция.Название_конференции)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.ID_спонсора }) /
+            @Html.ActionLink("Удалить", "Delete", new { id=item.ID_спонсора })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,50 @@
+﻿@model Практика_задание2.News_draft
+@{
+    ViewBag.Title = "Новая статья";
+}
+<style>
+    .field-validation-error {
+        color: #b94a48;
+    }
+
+    input.input-validation-error {
+        border: 1px solid #b94a48;
+    }
+
+    .validation-summary-errors {
+        color: #b94a48;
+    }
+</style>
+
+<h2>Добавить новую статью:</h2>
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <br />
+    @Html.EditorFor(m => m.date)
+    <br />
+    <br />
+    @Html.LabelFor(m => m.header, "Заголовок")
+    <br />
+    @Html.TextAreaFor(m => m.header)
+    <br />
+    <br />
+    @Html.LabelFor(m => m.article, "Текст статьи")
+    <br />
+    @Html.TextAreaFor(m => m.article)
+    <br />
+    <br />
+    @Html.LabelFor(m => m.author, "Автор")
+    <br />
+    @Html.EditorFor(m => m.author)
+    <br />
+    <br />
+
+    <input type="submit" value="Добавить" />
+}
+

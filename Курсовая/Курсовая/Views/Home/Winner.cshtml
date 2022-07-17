@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Курсовая.Winner_Result>
+@{
+    ViewBag.Title = "Победитель";
+}
+
+<h2>Победитель конференции</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Id конференции: @Html.TextBox("IdKon")
+        Направление доклада: @Html.TextBox("Napr")
+        <input type="submit" value="Поиск" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Фамилия)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Имя)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Учебное_заведение)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Название)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Направление)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Баллы)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Фамилия)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Имя)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Учебное_заведение)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Название)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Направление)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Баллы)
+            </td>
+        </tr>
+    }
+</table>

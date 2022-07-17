@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Курсовая.Зона>
+
+@{
+    ViewBag.Title = "Таблица 'Зона'";
+}
+
+<h2>Таблица "Зона"</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Название)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Предназначение)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Технический_специалист)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Техника)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Место_проведения.Адрес)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Название)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Предназначение)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Технический_специалист)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Техника)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Место_проведения.Адрес)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.ID_зоны })/
+            @Html.ActionLink("Удалить", "Delete", new { id=item.ID_зоны })
+        </td>
+    </tr>
+}
+
+</table>

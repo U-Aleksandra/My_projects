@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Курсовая.Сборник>
+
+@{
+    ViewBag.Title = "Таблица 'Сборник'";
+}
+
+<h2>Таблица "Сборник"</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+@using (Html.BeginForm())
+{
+<p>
+    Цена от: @Html.TextBox("Price")
+    РИНЦ: @Html.CheckBox("ChekRes")
+    Все: @Html.CheckBox("Res")
+    @*<input id="responsable" name="checkResp" type="checkbox" />*@
+    <input type="submit" value="Поиск" />
+</p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Название_сборника)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Издательский_центр)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.РИНЦ)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Стоимость)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Количество_страниц)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Электронный_или_печатный_вариант)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Дата_выпуска)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Рассылка_докладчикам)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Конференция.Название_конференции)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Название_сборника)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Издательский_центр)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.РИНЦ)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Стоимость) руб/шт
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Количество_страниц)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Электронный_или_печатный_вариант)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Дата_выпуска)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Рассылка_докладчикам)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Конференция.Название_конференции)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.ID_сборник }) /
+            @Html.ActionLink("Удалить", "Delete", new { id=item.ID_сборник })
+        </td>
+    </tr>
+}
+
+</table>

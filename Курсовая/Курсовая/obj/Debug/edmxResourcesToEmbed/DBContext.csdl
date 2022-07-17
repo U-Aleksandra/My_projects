@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Оргкомитет_конференцииModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="Winner_Result">
+    <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Учебное_заведение" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Направление" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Баллы" Type="Int32" />
+  </ComplexType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Докладчики">
+    <Key>
+      <PropertyRef Name="ID_докладчика" />
+    </Key>
+    <Property Name="ID_докладчика" Type="Int32" Nullable="false" />
+    <Property Name="Паспорт" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" DefaultValue="7312000000" />
+    <Property Name="Дата_рождения" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Учебное_заведение" Type="String" MaxLength="100" FixedLength="false" Unicode="true" DefaultValue="УлГПУ" />
+    <Property Name="Курс" Type="Int32" DefaultValue="2" />
+    <Property Name="Научный_руководитель" Type="String" MaxLength="100" FixedLength="false" Unicode="true" DefaultValue="Озерова Д. К." />
+    <NavigationProperty Name="Участники" Relationship="Self.FK_Dokladchiks_Ychastnikis" FromRole="Докладчики" ToRole="Участники" />
+    <NavigationProperty Name="Доклады" Relationship="Self.FK_Доклады_Докладчики" FromRole="Докладчики" ToRole="Доклады" />
+  </EntityType>
+  <EntityType Name="Доклады">
+    <Key>
+      <PropertyRef Name="ID_доклада" />
+    </Key>
+    <Property Name="ID_доклада" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="Семейные традиции" />
+    <Property Name="Направление" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="Моя семья" />
+    <Property Name="Публикация" Type="Boolean" Nullable="false" DefaultValue="true" />
+    <Property Name="Денежный_взнос" Type="Decimal" Precision="19" Scale="4" Nullable="false" DefaultValue="400" />
+    <Property Name="Количество_минут" Type="Double" DefaultValue="9" />
+    <Property Name="Баллы" Type="Int32" DefaultValue="10" />
+    <Property Name="ID_докладчика" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Докладчики" Relationship="Self.FK_Доклады_Докладчики" FromRole="Доклады" ToRole="Докладчики" />
+  </EntityType>
+  <EntityType Name="Зона">
+    <Key>
+      <PropertyRef Name="ID_зоны" />
+    </Key>
+    <Property Name="ID_зоны" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" DefaultValue="Киноконцертный зал &quot;Тарелка" />
+    <Property Name="Предназначение" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="Проведение торждественной части" />
+    <Property Name="Технический_специалист" Type="String" MaxLength="50" FixedLength="false" Unicode="true" DefaultValue="Лёвин А. В." />
+    <Property Name="Техника" Type="String" MaxLength="100" FixedLength="false" Unicode="true" DefaultValue="Микрофон, проектор, колонки" />
+    <Property Name="ID_места_нахождения" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Место_проведения" Relationship="Self.FK_Зона_Место_проведения" FromRole="Зона" ToRole="Место_проведения" />
+    <NavigationProperty Name="Обслуживающий_персонал" Relationship="Self.FK_Обслуживающий_персонал_Зона" FromRole="Зона" ToRole="Обслуживающий_персонал" />
+  </EntityType>
+  <EntityType Name="Конференция">
+    <Key>
+      <PropertyRef Name="ID_конференции" />
+    </Key>
+    <Property Name="ID_конференции" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Название_конференции" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="Краеведческая конференция &quot;Наш край родной&quot;" />
+    <Property Name="Основная_тема" Type="String" MaxLength="100" FixedLength="false" Unicode="true" DefaultValue="История родного края" />
+    <Property Name="Дата_проведения_Начало" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Дата_проведения_Конец" Type="DateTime" Precision="0" />
+    <Property Name="Организация" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="Ульяновский государственный технический университет" />
+    <Property Name="Город" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="Ульяновск" />
+    <Property Name="Аудитория" Type="String" MaxLength="50" FixedLength="false" Unicode="true" DefaultValue="14" />
+    <Property Name="Рабочий_язык_конференции" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="Русский" />
+    <Property Name="Ссылка_на_сайт" Type="String" MaxLength="50" FixedLength="false" Unicode="true" DefaultValue="www.konf.ru" />
+    <NavigationProperty Name="Место_проведения" Relationship="Self.FK_Mesto_provedeniyas_Konferencias" FromRole="Конференция" ToRole="Место_проведения" />
+    <NavigationProperty Name="Сборник" Relationship="Self.FK_Сборник_Конференция" FromRole="Конференция" ToRole="Сборник" />
+    <NavigationProperty Name="Спонсоры" Relationship="Self.FK_Спонсоры_Конференция" FromRole="Конференция" ToRole="Спонсоры" />
+    <NavigationProperty Name="Участники" Relationship="Self.FK_Участники_Конференция" FromRole="Конференция" ToRole="Участники" />
+  </EntityType>
+  <EntityType Name="Место_проведения">
+    <Key>
+      <PropertyRef Name="ID_места_проведения" />
+    </Key>
+    <Property Name="ID_места_проведения" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Адрес" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="ул. Северный Венец, 32" />
+    <Property Name="Название" Type="String" MaxLength="100" FixedLength="true" Unicode="true" DefaultValue="Ульяновский государственный технический университет" />
+    <Property Name="Стоимость_аренды" Type="Decimal" Precision="19" Scale="4" DefaultValue="0" />
+    <Property Name="Дата_аренды" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ID_конференции" Type="Int32" />
+    <NavigationProperty Name="Зона" Relationship="Self.FK_Зона_Место_проведения" FromRole="Место_проведения" ToRole="Зона" />
+    <NavigationProperty Name="Конференция" Relationship="Self.FK_Mesto_provedeniyas_Konferencias" FromRole="Место_проведения" ToRole="Конференция" />
+  </EntityType>
+  <EntityType Name="Обслуживающий_персонал">
+    <Key>
+      <PropertyRef Name="ID_сотрудника" />
+    </Key>
+    <Property Name="ID_сотрудника" Type="Int32" Nullable="false" />
+    <Property Name="Ответственная_зона" Type="Int32" Nullable="false" />
+    <Property Name="Обязанности" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="Рассадка гостей" />
+    <Property Name="Стоимость_услуг" Type="Decimal" Precision="19" Scale="4" DefaultValue="200" />
+    <NavigationProperty Name="Зона" Relationship="Self.FK_Обслуживающий_персонал_Зона" FromRole="Обслуживающий_персонал" ToRole="Зона" />
+    <NavigationProperty Name="Участники" Relationship="Self.FK_Obslygivaushi_personal_Ychastnikis" FromRole="Обслуживающий_персонал" ToRole="Участники" />
+  </EntityType>
+  <EntityType Name="Организаторы">
+    <Key>
+      <PropertyRef Name="ID_организатора" />
+    </Key>
+    <Property Name="ID_организатора" Type="Int32" Nullable="false" />
+    <Property Name="Должность" Type="String" MaxLength="50" FixedLength="false" Unicode="true" DefaultValue="Доцент" />
+    <Property Name="Обязанность" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="Рассылка приглашений" />
+    <Property Name="Комиссия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="Программная" />
+    <NavigationProperty Name="Участники" Relationship="Self.FK_Организаторы_Участники" FromRole="Организаторы" ToRole="Участники" />
+  </EntityType>
+  <EntityType Name="Сборник">
+    <Key>
+      <PropertyRef Name="ID_сборник" />
+    </Key>
+    <Property Name="ID_сборник" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_конференции" Type="Int32" Nullable="false" />
+    <Property Name="Название_сборника" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="Наш родной край" />
+    <Property Name="Издательский_центр" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="ООО &quot;Лань&quot;" />
+    <Property Name="РИНЦ" Type="Boolean" Nullable="false" DefaultValue="True" />
+    <Property Name="Стоимость" Type="Decimal" Precision="19" Scale="4" DefaultValue="500" />
+    <Property Name="Количество_страниц" Type="Int32" DefaultValue="30" />
+    <Property Name="Электронный_или_печатный_вариант" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="Печатный" />
+    <Property Name="Дата_выпуска" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Рассылка_докладчикам" Type="Boolean" Nullable="false" DefaultValue="True" />
+    <NavigationProperty Name="Конференция" Relationship="Self.FK_Сборник_Конференция" FromRole="Сборник" ToRole="Конференция" />
+  </EntityType>
+  <EntityType Name="Спонсоры">
+    <Key>
+      <PropertyRef Name="ID_спонсора" />
+    </Key>
+    <Property Name="ID_спонсора" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Название_компании" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="Областное государственное учреждение редакция газеты &quot;Родина Ильича&quot;" />
+    <Property Name="Представитель" Type="String" MaxLength="50" FixedLength="false" Unicode="true" DefaultValue="Николаев В. Д." />
+    <Property Name="Спонсорский_пакет" Type="String" MaxLength="50" FixedLength="false" Unicode="true" DefaultValue="Бронзовый спонсор" />
+    <Property Name="Сумма" Type="Decimal" Precision="19" Scale="4" Nullable="false" DefaultValue="30000" />
+    <Property Name="ID_конференции" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Конференция" Relationship="Self.FK_Спонсоры_Конференция" FromRole="Спонсоры" ToRole="Конференция" />
+  </EntityType>
+  <EntityType Name="Участники">
+    <Key>
+      <PropertyRef Name="ID_участника" />
+    </Key>
+    <Property Name="ID_участника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_конференции" Type="Int32" Nullable="false" />
+    <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="Иванов" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" DefaultValue="Иван" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" DefaultValue="Иванович" />
+    <Property Name="Телефон" Type="String" MaxLength="11" FixedLength="true" Unicode="true" DefaultValue="8929777777" Nullable="false" />
+    <Property Name="Почта" Type="String" MaxLength="50" FixedLength="false" Unicode="true" DefaultValue="ivanov@yandex.ru" />
+    <NavigationProperty Name="Докладчики" Relationship="Self.FK_Dokladchiks_Ychastnikis" FromRole="Участники" ToRole="Докладчики" />
+    <NavigationProperty Name="Конференция" Relationship="Self.FK_Участники_Конференция" FromRole="Участники" ToRole="Конференция" />
+    <NavigationProperty Name="Обслуживающий_персонал" Relationship="Self.FK_Obslygivaushi_personal_Ychastnikis" FromRole="Участники" ToRole="Обслуживающий_персонал" />
+    <NavigationProperty Name="Организаторы" Relationship="Self.FK_Организаторы_Участники" FromRole="Участники" ToRole="Организаторы" />
+  </EntityType>
+  <Association Name="FK_Dokladchiks_Ychastnikis">
+    <End Role="Участники" Type="Self.Участники" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Докладчики" Type="Self.Докладчики" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Участники">
+        <PropertyRef Name="ID_участника" />
+      </Principal>
+      <Dependent Role="Докладчики">
+        <PropertyRef Name="ID_докладчика" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Доклады_Докладчики">
+    <End Role="Докладчики" Type="Self.Докладчики" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Доклады" Type="Self.Доклады" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Докладчики">
+        <PropertyRef Name="ID_докладчика" />
+      </Principal>
+      <Dependent Role="Доклады">
+        <PropertyRef Name="ID_докладчика" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Зона_Место_проведения">
+    <End Role="Место_проведения" Type="Self.Место_проведения" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Зона" Type="Self.Зона" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Место_проведения">
+        <PropertyRef Name="ID_места_проведения" />
+      </Principal>
+      <Dependent Role="Зона">
+        <PropertyRef Name="ID_места_нахождения" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Обслуживающий_персонал_Зона">
+    <End Role="Зона" Type="Self.Зона" Multiplicity="1" />
+    <End Role="Обслуживающий_персонал" Type="Self.Обслуживающий_персонал" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Зона">
+        <PropertyRef Name="ID_зоны" />
+      </Principal>
+      <Dependent Role="Обслуживающий_персонал">
+        <PropertyRef Name="Ответственная_зона" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mesto_provedeniyas_Konferencias">
+    <End Role="Конференция" Type="Self.Конференция" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Место_проведения" Type="Self.Место_проведения" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Конференция">
+        <PropertyRef Name="ID_конференции" />
+      </Principal>
+      <Dependent Role="Место_проведения">
+        <PropertyRef Name="ID_конференции" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Сборник_Конференция">
+    <End Role="Конференция" Type="Self.Конференция" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Сборник" Type="Self.Сборник" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Конференция">
+        <PropertyRef Name="ID_конференции" />
+      </Principal>
+      <Dependent Role="Сборник">
+        <PropertyRef Name="ID_конференции" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Спонсоры_Конференция">
+    <End Role="Конференция" Type="Self.Конференция" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Спонсоры" Type="Self.Спонсоры" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Конференция">
+        <PropertyRef Name="ID_конференции" />
+      </Principal>
+      <Dependent Role="Спонсоры">
+        <PropertyRef Name="ID_конференции" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Участники_Конференция">
+    <End Role="Конференция" Type="Self.Конференция" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Участники" Type="Self.Участники" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Конференция">
+        <PropertyRef Name="ID_конференции" />
+      </Principal>
+      <Dependent Role="Участники">
+        <PropertyRef Name="ID_конференции" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Obslygivaushi_personal_Ychastnikis">
+    <End Role="Участники" Type="Self.Участники" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Обслуживающий_персонал" Type="Self.Обслуживающий_персонал" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Участники">
+        <PropertyRef Name="ID_участника" />
+      </Principal>
+      <Dependent Role="Обслуживающий_персонал">
+        <PropertyRef Name="ID_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Организаторы_Участники">
+    <End Role="Участники" Type="Self.Участники" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Организаторы" Type="Self.Организаторы" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Участники">
+        <PropertyRef Name="ID_участника" />
+      </Principal>
+      <Dependent Role="Организаторы">
+        <PropertyRef Name="ID_организатора" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Оргкомитет_конференцииEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Докладчики" EntityType="Self.Докладчики" />
+    <EntitySet Name="Доклады" EntityType="Self.Доклады" />
+    <EntitySet Name="Зона" EntityType="Self.Зона" />
+    <EntitySet Name="Конференция" EntityType="Self.Конференция" />
+    <EntitySet Name="Место_проведения" EntityType="Self.Место_проведения" />
+    <EntitySet Name="Обслуживающий_персонал" EntityType="Self.Обслуживающий_персонал" />
+    <EntitySet Name="Организаторы" EntityType="Self.Организаторы" />
+    <EntitySet Name="Сборник" EntityType="Self.Сборник" />
+    <EntitySet Name="Спонсоры" EntityType="Self.Спонсоры" />
+    <EntitySet Name="Участники" EntityType="Self.Участники" />
+    <AssociationSet Name="FK_Dokladchiks_Ychastnikis" Association="Self.FK_Dokladchiks_Ychastnikis">
+      <End Role="Участники" EntitySet="Участники" />
+      <End Role="Докладчики" EntitySet="Докладчики" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Доклады_Докладчики" Association="Self.FK_Доклады_Докладчики">
+      <End Role="Докладчики" EntitySet="Докладчики" />
+      <End Role="Доклады" EntitySet="Доклады" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Зона_Место_проведения" Association="Self.FK_Зона_Место_проведения">
+      <End Role="Место_проведения" EntitySet="Место_проведения" />
+      <End Role="Зона" EntitySet="Зона" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Обслуживающий_персонал_Зона" Association="Self.FK_Обслуживающий_персонал_Зона">
+      <End Role="Зона" EntitySet="Зона" />
+      <End Role="Обслуживающий_персонал" EntitySet="Обслуживающий_персонал" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mesto_provedeniyas_Konferencias" Association="Self.FK_Mesto_provedeniyas_Konferencias">
+      <End Role="Конференция" EntitySet="Конференция" />
+      <End Role="Место_проведения" EntitySet="Место_проведения" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Сборник_Конференция" Association="Self.FK_Сборник_Конференция">
+      <End Role="Конференция" EntitySet="Конференция" />
+      <End Role="Сборник" EntitySet="Сборник" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Спонсоры_Конференция" Association="Self.FK_Спонсоры_Конференция">
+      <End Role="Конференция" EntitySet="Конференция" />
+      <End Role="Спонсоры" EntitySet="Спонсоры" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Участники_Конференция" Association="Self.FK_Участники_Конференция">
+      <End Role="Конференция" EntitySet="Конференция" />
+      <End Role="Участники" EntitySet="Участники" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Obslygivaushi_personal_Ychastnikis" Association="Self.FK_Obslygivaushi_personal_Ychastnikis">
+      <End Role="Участники" EntitySet="Участники" />
+      <End Role="Обслуживающий_персонал" EntitySet="Обслуживающий_персонал" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Организаторы_Участники" Association="Self.FK_Организаторы_Участники">
+      <End Role="Участники" EntitySet="Участники" />
+      <End Role="Организаторы" EntitySet="Организаторы" />
+    </AssociationSet>
+    <FunctionImport Name="Winner" IsComposable="true" ReturnType="Collection(Оргкомитет_конференцииModel.Winner_Result)">
+      <Parameter Name="idKonf" Mode="In" Type="Int32" />
+      <Parameter Name="napravl" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SELL">
+      <Parameter Name="maxsum" Mode="In" Type="Decimal" />
+      <Parameter Name="sell" Mode="In" Type="Double" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Оргкомитет_конференцииModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Оргкомитет_конференцииModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="C__MigrationHistory" EntityType="Оргкомитет_конференцииModel.C__MigrationHistory" />
+    <EntitySet Name="Users" EntityType="Оргкомитет_конференцииModel.Users" />
+    <EntitySet Name="Role" EntityType="Оргкомитет_конференцииModel.Role" />
+    <AssociationSet Name="FK_Users_Role" Association="Оргкомитет_конференцииModel.FK_Users_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <FunctionImport Name="Winner1" IsComposable="true" ReturnType="Collection(Оргкомитет_конференцииModel.Winner1_Result)">
+      <Parameter Name="idKonf" Mode="In" Type="Int32" />
+      <Parameter Name="napravl" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="budget" IsComposable="true" ReturnType="Collection(Оргкомитет_конференцииModel.budget_Result)">
+      <Parameter Name="idKonf" Mode="In" Type="Int32" />
+      <Parameter Name="countSbornik" Mode="In" Type="Int32" />
+      <Parameter Name="hour" Mode="In" Type="Double" />
+      <Parameter Name="countStaff" Mode="In" Type="Double" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdRoles" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="Оргкомитет_конференцииModel.FK_Users_Role" FromRole="Users" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="Оргкомитет_конференцииModel.FK_Users_Role" FromRole="Role" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK_Users_Role">
+    <End Type="Оргкомитет_конференцииModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="Оргкомитет_конференцииModel.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="IdRoles" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="Winner1_Result">
+    <Property Type="String" Name="Фамилия" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Имя" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Учебное_заведение" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Название" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Направление" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Баллы" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="budget_Result">
+    <Property Type="String" Name="Название_конференции" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="Затраты" Nullable="true" Precision="18" Scale="0" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,64 @@
+﻿@model Курсовая.Спонсоры
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление данных</h2>
+
+<h3>Вы точно хотите удалить?</h3>
+<div>
+    <h4>Спонсор @Model.ID_спонсора</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Название_компании)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Название_компании)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Представитель)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Представитель)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Спонсорский_пакет)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Спонсорский_пакет)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Сумма)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Сумма)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Конференция.Название_конференции)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Конференция.Название_конференции)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад", "Index")
+        </div>
+    }
+</div>

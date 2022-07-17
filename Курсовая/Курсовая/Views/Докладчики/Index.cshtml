@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Курсовая.Докладчики>
+
+@{
+    ViewBag.Title = "Таблица 'Докладчики'";
+}
+
+<h2>Таблица "Докладчики"</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_докладчика)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Паспорт)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Дата_рождения)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Учебное_заведение)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Курс)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Научный_руководитель)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Участники.Фамилия)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_докладчика)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Паспорт)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Дата_рождения)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Учебное_заведение)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Курс)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Научный_руководитель)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Участники.Фамилия)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.ID_докладчика }) /
+            @Html.ActionLink("Удалить", "Delete", new { id=item.ID_докладчика })
+        </td>
+    </tr>
+}
+
+</table>

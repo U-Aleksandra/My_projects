@@ -1,0 +1,72 @@
+﻿@model Курсовая.Докладчики
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление данных</h2>
+
+<h3>Вы точно хотите удалить?</h3>
+<div>
+    <h4>Докладчик @Model.ID_докладчика</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Участники.Фамилия)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Участники.Фамилия)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Паспорт)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Паспорт)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_рождения)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_рождения)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Учебное_заведение)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Учебное_заведение)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Курс)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Курс)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Научный_руководитель)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Научный_руководитель)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,58 @@
+﻿@model Курсовая.Спонсоры
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Спонсоры</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Название_компании)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Название_компании)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Представитель)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Представитель)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Спонсорский_пакет)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Спонсорский_пакет)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Сумма)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Сумма)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Конференция.Название_конференции)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Конференция.Название_конференции)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_спонсора }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

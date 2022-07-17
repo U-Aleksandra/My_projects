@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Курсовая.Доклады>
+@{
+    ViewBag.Title = "Перечень участников";
+}
+
+<h2>Перечень участников</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Докладчики.Участники.Конференция.Название_конференции)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Докладчики.Участники.Фамилия)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Докладчики.Участники.Имя)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Докладчики.Участники.Отчество)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Докладчики.Дата_рождения)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Докладчики.Учебное_заведение)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Докладчики.Курс)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Название)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Направление)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Докладчики.Научный_руководитель)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Докладчики.Участники.Конференция.Название_конференции)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Докладчики.Участники.Фамилия)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Докладчики.Участники.Имя)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Докладчики.Участники.Отчество)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Докладчики.Дата_рождения)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Докладчики.Учебное_заведение)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Докладчики.Курс)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Название)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Направление)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Докладчики.Научный_руководитель)
+            </td>
+        </tr>
+    }
+
+</table>

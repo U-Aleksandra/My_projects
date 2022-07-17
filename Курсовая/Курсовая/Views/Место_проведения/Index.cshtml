@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Курсовая.Место_проведения>
+
+@{
+    ViewBag.Title = "Таблица 'Место проведения'";
+}
+
+<h2>Таблица "Место проведения"</h2>
+@if (Roles.IsUserInRole("admin"))
+{
+    <p>
+        @Html.ActionLink("Добавить", "Create")
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Адрес)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Название)
+        </th>
+        @if (Roles.IsUserInRole("admin"))
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.Стоимость_аренды)
+            </th>
+        }
+        @if (Roles.IsUserInRole("admin"))
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.Дата_аренды)
+            </th>
+        }
+        @if (Roles.IsUserInRole("user"))
+        {
+            <th>
+                @Html.DisplayName("Дата проведения")
+            </th>
+        }
+            <th>
+                @Html.DisplayNameFor(model => model.Конференция.Название_конференции)
+            </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Адрес)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Название)
+            </td>
+            @if (Roles.IsUserInRole("admin"))
+            {
+            <td>
+                @Html.DisplayFor(modelItem => item.Стоимость_аренды) руб/час
+            </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата_аренды)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Конференция.Название_конференции)
+            </td>
+            @if (Roles.IsUserInRole("admin"))
+            {
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID_места_проведения }) /
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID_места_проведения })
+            </td>
+            }
+        </tr>
+    }
+
+</table>

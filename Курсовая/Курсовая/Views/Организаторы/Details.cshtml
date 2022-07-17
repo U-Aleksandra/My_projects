@@ -1,0 +1,50 @@
+﻿@model Курсовая.Организаторы
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Организаторы</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Должность)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Должность)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Обязанность)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Обязанность)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Комиссия)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Комиссия)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Участники.Фамилия)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Участники.Фамилия)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_организатора }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

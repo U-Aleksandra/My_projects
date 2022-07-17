@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Курсовая.Обслуживающий_персонал>
+
+@{
+    ViewBag.Title = "Таблица 'Обслуживающий персонал'";
+}
+
+<h2>Таблица "Обслуживающий персонал"</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Обязанности)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Стоимость_услуг)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Зона.Название)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Участники.Фамилия)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Обязанности)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Стоимость_услуг) руб/час
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Зона.Название)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Участники.Фамилия)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.ID_сотрудника }) /
+            @Html.ActionLink("Удалить", "Delete", new { id=item.ID_сотрудника })
+        </td>
+    </tr>
+}
+
+</table>

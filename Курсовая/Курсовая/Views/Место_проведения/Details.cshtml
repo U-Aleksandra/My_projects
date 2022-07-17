@@ -1,0 +1,58 @@
+﻿@model Курсовая.Место_проведения
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Место_проведения</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Адрес)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Адрес)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Название)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Название)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Стоимость_аренды)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Стоимость_аренды)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_аренды)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_аренды)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Конференция.Название_конференции)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Конференция.Название_конференции)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_места_проведения }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

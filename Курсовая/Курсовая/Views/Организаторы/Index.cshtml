@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Курсовая.Организаторы>
+
+@{
+    ViewBag.Title = "Таблица 'Организаторы'";
+}
+
+<h2>Таблица "Организаторы"</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Должность)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Обязанность)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Комиссия)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Участники.Фамилия)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Должность)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Обязанность)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Комиссия)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Участники.Фамилия)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.ID_организатора }) /
+            @Html.ActionLink("Удалить", "Delete", new { id=item.ID_организатора })
+        </td>
+    </tr>
+}
+
+</table>

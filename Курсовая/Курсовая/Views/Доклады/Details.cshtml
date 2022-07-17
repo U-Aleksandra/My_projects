@@ -1,0 +1,74 @@
+﻿@model Курсовая.Доклады
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Доклады</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Название)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Название)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Направление)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Направление)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Публикация)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Публикация)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Денежный_взнос)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Денежный_взнос)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Количество_минут)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Количество_минут)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Баллы)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Баллы)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Докладчики.Паспорт)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Докладчики.Паспорт)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_доклада }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
