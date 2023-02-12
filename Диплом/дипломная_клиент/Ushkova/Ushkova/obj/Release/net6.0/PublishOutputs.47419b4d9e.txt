@@ -1,0 +1,7 @@
+D:\Code\C#\дипломная_клиент\Ushkova\Ushkova\obj\Release\net6.0\PubTmp\Out\Ushkova.exe
+D:\Code\C#\дипломная_клиент\Ushkova\Ushkova\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+D:\Code\C#\дипломная_клиент\Ushkova\Ushkova\obj\Release\net6.0\PubTmp\Out\appsettings.json
+D:\Code\C#\дипломная_клиент\Ushkova\Ushkova\obj\Release\net6.0\PubTmp\Out\Ushkova.dll
+D:\Code\C#\дипломная_клиент\Ushkova\Ushkova\obj\Release\net6.0\PubTmp\Out\Ushkova.deps.json
+D:\Code\C#\дипломная_клиент\Ushkova\Ushkova\obj\Release\net6.0\PubTmp\Out\Ushkova.runtimeconfig.json
+D:\Code\C#\дипломная_клиент\Ushkova\Ushkova\obj\Release\net6.0\PubTmp\Out\Ushkova.pdb
