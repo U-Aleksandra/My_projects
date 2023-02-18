@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace graduate_work
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class PageRegist : ContentPage
 	{
 		public PageRegist ()
@@ -18,67 +12,68 @@ namespace graduate_work
 			InitializeComponent ();
 		}
 
-        bool next1;
-        bool next2;
-        bool next3;
+        private bool _nameIsValid;
+        private bool _phoneIsValid;
+        private bool _passwordIsValid;
         private async void buttonRegist_Clicked(object sender, EventArgs e)
         {
-            
-
-            if ((string.IsNullOrEmpty(entryName.Text)) ||
-			(string.IsNullOrWhiteSpace(entryName.Text)))
+            if (string.IsNullOrEmpty(entryName.Text) ||
+			string.IsNullOrWhiteSpace(entryName.Text))
 			{
 				errorName.Text = "Введите имя";
-                next1 = false;
+                _nameIsValid = false;
 			}
 			else
 			{
 				errorName.Text = " ";
-                next1 = true;
+                _nameIsValid = true;
 			}
 
-            if ((string.IsNullOrEmpty(phoneEntry.Text)) ||
-            (string.IsNullOrWhiteSpace(phoneEntry.Text)))
+            if (string.IsNullOrEmpty(phoneEntry.Text) ||
+            string.IsNullOrWhiteSpace(phoneEntry.Text))
             {
                 errorPhone.Text = "Введите номер телефона";
             }
             else if (phoneEntry.Text.Length < 16)
             {
                 errorPhone.Text = "Неправильный формат";
-                next2 = false;
+                _phoneIsValid = false;
             }
             else
             {
                 errorPhone.Text = " ";
-                next2= true;
+                _phoneIsValid= true;
             }
 
-            if ((string.IsNullOrEmpty(passwordEntry.Text)) ||
-            (string.IsNullOrWhiteSpace(passwordEntry.Text)))
+            if (string.IsNullOrEmpty(passwordEntry.Text) ||
+            string.IsNullOrWhiteSpace(passwordEntry.Text))
             {
                 errorPassword.TextColor = Color.Red;
                 errorPassword.Text = "Введите пароль";
             }
 
-            if (next1 && next2 && next3 && checkBoxSpecial.IsChecked == true)
+            if (_nameIsValid && _phoneIsValid && _passwordIsValid)
             {
-                await Navigation.PushAsync(new PageRegistSpecialist());
+                if (checkBoxSpecial.IsChecked)
+                    await Navigation.PushAsync(new PageRegistSpecialist());
+                else
+                    await Navigation.PushAsync(new PageRegistSpecialist());
             }
            
         }
         private void passwordEntryReturn_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (passwordEntryReturn.Text != passwordEntry.Text)
+            if (passwordEntryReturn.Text != passwordEntry.Text && !string.IsNullOrEmpty(passwordEntryReturn.Text))
             {
                 errorPassword.TextColor = Color.Red;
                 errorPassword.Text = "Пароли не совпадают";
-                next3 = false;
+                _passwordIsValid = false;
             }
-            else
+            else if(!string.IsNullOrEmpty(passwordEntryReturn.Text))
             {
                 errorPassword.TextColor = Color.Green;
                 errorPassword.Text = "Пароли совпадают";
-                next3 = true;
+                _passwordIsValid = true;
             }
         }
     }

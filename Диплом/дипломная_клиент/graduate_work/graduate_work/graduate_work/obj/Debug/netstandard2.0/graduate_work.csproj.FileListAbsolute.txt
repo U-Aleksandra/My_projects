@@ -16,3 +16,4 @@ D:\Code\C#\дипломная_клиент\graduate_work\graduate_work\graduate_
 D:\Code\C#\дипломная_клиент\graduate_work\graduate_work\graduate_work\obj\Debug\netstandard2.0\PageInput.xaml.g.cs
 D:\Code\C#\дипломная_клиент\graduate_work\graduate_work\graduate_work\obj\Debug\netstandard2.0\PageRegist.xaml.g.cs
 D:\Code\C#\дипломная_клиент\graduate_work\graduate_work\graduate_work\obj\Debug\netstandard2.0\PageRegistSpecialist.xaml.g.cs
+D:\Code\C#\дипломная_клиент\graduate_work\graduate_work\graduate_work\obj\Debug\netstandard2.0\pageHome.xaml.g.cs

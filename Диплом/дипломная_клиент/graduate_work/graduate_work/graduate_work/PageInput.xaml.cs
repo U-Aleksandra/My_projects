@@ -11,13 +11,14 @@ namespace graduate_work
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class PageInput : ContentPage
-	{
+    {
 		public PageInput ()
 		{
 			InitializeComponent ();
+			
 		}
 
-        private void buttonInput_Clicked(object sender, EventArgs e)
+        private async void buttonInput_Clicked(object sender, EventArgs e)
         {
 
             if ((string.IsNullOrEmpty(phoneEntry.Text)) ||
@@ -45,6 +46,7 @@ namespace graduate_work
 				errorPassword.Text = " ";
 			}
 
+			await Shell.Current.Navigation.PushAsync(new PageHome());
         }
     }
 }
